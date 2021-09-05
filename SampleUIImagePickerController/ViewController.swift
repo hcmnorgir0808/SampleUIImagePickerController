@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AssetsLibrary
 
 class ViewController: UIViewController {
 
@@ -14,6 +15,25 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func buttonDidTapped(_ sender: Any) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
+        
+    }
 }
 
+extension ViewController: UIImagePickerControllerDelegate {
+    // キャンセルボタンが押下されたとき
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print(#function)
+    }
+    
+    // image or movieの選択を終了したとき
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print(#function)
+    }
+}
+
+extension ViewController: UINavigationControllerDelegate {}
